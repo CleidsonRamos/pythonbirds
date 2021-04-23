@@ -18,8 +18,13 @@ class Pessoa():
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - Olhos da classe {cls.olhos}'
 
+class Homem(Pessoa):
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar() # super() pega a classe da classe a classe master
+        return  f'{cumprimentar_da_classe}. Aperto de mão'
+
 if __name__=='__main__':
-    cleidson = Pessoa(nome='Cleidson')
+    cleidson = Homem(nome='Cleidson')
     zeus = Pessoa(cleidson, nome='Zeus')
 
     print(zeus.nome)
@@ -31,4 +36,18 @@ if __name__=='__main__':
     print(zeus.__dict__)
 
     print(Pessoa.nome_e_atributos_de_classe())
+
+    print('___________________________________________')
+    pessoa = Pessoa('Anonimo')
+
+    # isinstance verifica se um objeto é determinada classe
+    print(isinstance(pessoa, Pessoa)) # verdade
+    print(isinstance(cleidson, Pessoa))  # verdade
+    print(isinstance(pessoa, Homem))  # falso
+    print(isinstance(cleidson, Homem))  # verdade
+
+    print('___________________________________________')
+    print('__________Sobrescrita__de__Metodo__________')
+
+
 
